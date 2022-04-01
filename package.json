@@ -1,12 +1,14 @@
 {
   "name": "q4-entrega-refatorando-codigo-node",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon --experimental-specifier-resolution=node src/server.js",
+    "test": "nodemon --experimental-vm-modules node_modules/jest/bin/jest.js --passWithNoTests"
   },
   "dependencies": {
+    "@jest/globals": "^27.5.1",
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
@@ -15,6 +17,15 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
-  }
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.1",
+    "supertest": "^6.2.2"
+  },
+  "type": "module"
 }
