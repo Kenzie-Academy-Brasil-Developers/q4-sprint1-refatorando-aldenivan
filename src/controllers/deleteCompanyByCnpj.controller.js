@@ -1,9 +1,7 @@
-import { companies } from '../configs';
+import deleteCompanybyCnpjService from '../services/deleteCompanyByCnpj.service';
 
 const deleteCompanybyCnpjController = (req, res) => {
-  let { cnpj } = req.params;
-
-  companies = companies.filter((company) => company.cnpj !== cnpj);
+  let companies = deleteCompanybyCnpjService(req);
 
   res.status(200).json({ messagem: 'Company deleted', companies });
 };

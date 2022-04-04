@@ -1,12 +1,7 @@
-import { companies } from '../configs';
+import { updateCompanyByCnpjService } from '../services';
 
 const updateCompanyByCnpjController = (req, res) => {
-  let { company } = req;
-  let updatedCompany = { ...company, ...req.body };
-
-  let index = companies.indexOf(company);
-
-  companies[index] = updatedCompany;
+  let companies = updateCompanyByCnpjService(req);
 
   res.status(200).json({ messagem: 'Company updated', companies });
 };
