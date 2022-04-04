@@ -1,5 +1,6 @@
-import { companies, config } from "../configs";
-import jwt from "jsonwebtoken";
+import { companies, config } from '../configs';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 
 const loginCompanyController = async (req, res) => {
   const { cnpj, password } = req.body;
@@ -9,10 +10,10 @@ const loginCompanyController = async (req, res) => {
   const match = await bcrypt.compare(password, company.password);
 
   if (!company) {
-    return res.status(401).json({ message: "Company not found" });
+    return res.status(401).json({ message: 'Company not found' });
   }
   if (!match) {
-    return res.status(401).json({ message: "User and password missmatch." });
+    return res.status(401).json({ message: 'User and password missmatch.' });
   }
 
   let token = jwt.sign({ cnpj: cnpj }, config.secret, {
